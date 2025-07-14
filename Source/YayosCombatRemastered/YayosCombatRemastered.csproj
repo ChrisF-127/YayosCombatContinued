@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BD73667A-078A-4A38-90F1-738A6CF12264}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YayosCombatRemastered</RootNamespace>
+    <AssemblyName>YayosCombatRemastered</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\1.6\Assemblies\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlsBuilder.cs" />
+    <Compile Include="zzzOLD\Eject\WorkGiver_EjectAmmo.cs" />
+    <Compile Include="zzzOLD\Stuff\YCA_DesignationDefOf.cs" />
+    <Compile Include="zzzOLD\Utility\AmmoUtility.cs" />
+    <Compile Include="zzzOLD\Utility\GeneralUtility.cs" />
+    <Compile Include="HarmonyPatches.cs" />
+    <Compile Include="zzzOLD\Jobs\JobDriver_EjectAmmo.cs" />
+    <Compile Include="zzzOLD\Jobs\JobDriver_ReloadFromSurrounding.cs" />
+    <Compile Include="zzzOLD\Jobs\YCA_JobUtility.cs" />
+    <Compile Include="zzzOLD\Jobs\YCA_JobDefOf.cs" />
+    <Compile Include="zzzOLD\Jobs\JobDriver_ReloadFromInventory.cs" />
+    <Compile Include="zzzOLD\yayoCombat\ArmorUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombat\JobDriver_EjectAmmo.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_Building_TurretGun_MakeGun.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelReloadable_PostExposeData.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelReloadable_UsedOnce.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelVerbOwner_Charged_PostPostMake.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelVerbOwner_CreateVerbTargetCommand.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelVerbOwner_Wearer.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_DamageWorker_AddInjury.cs" />
+    <Compile Include="zzzOLD\yayoCombat\Patch_DefGenerator_GenerateImpliedDefs_PreResolve.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_Dialog_ManageDrugPolicies_DoEntryRow.cs" />
+    <Compile Include="zzzOLD\yayoCombat\Patch_DrugPolicy.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_DrugPolicy_InitializeIfNeeded.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_JobGiver_MoveDrugsToInventory_FindDrugFor.cs" />
+    <Compile Include="zzzOLD\yayoCombat\Patch_PawnGenerator_GenerateGearFor.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_Pawn_DrugPolicyTracker_AllowedToTakeToInventory.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_Pawn_EquipmentTracker_DropAllEquipment.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_Pawn_TickRare.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_ReloadableUtility_FindPotentiallyReloadableGear.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_ReloadableUtility_FindSomeReloadableComponent.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_ReloadableUtility_WearerOf.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_StartingTicksToImpact.cs" />
+    <Compile Include="zzzOLD\yayoCombat\Patch_StatPart_ReloadMarketValue_TransformAndExplain.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_ThingFilter_SetFromPreset.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_ThingSetMaker_TraderStock_Generate.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_ThingWithComps_GetFloatMenuOptions.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_ThingWithComps_GetGizmos.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_Thing_TakeDamage.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_Tool_AdjustedCooldown.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_TraderKindDef_WillTrade.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_Verb_LaunchProjectile_TryCastShot.cs" />
+    <Compile Include="zzzOLD\yayoCombat\patch_WorkGiver_HasHuntingWeapon.cs" />
+    <Compile Include="zzzOLD\yayoCombat\reloadUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombat\Stance_yyReload.cs" />
+    <Compile Include="zzzOLD\yayoCombat\yayoCombat.cs" />
+    <Compile Include="zzzOLD\yayoCombat_Defs\ApparelLayerDefOf.cs" />
+    <Compile Include="zzzOLD\yayoCombat_Defs\BodyPartGroupDefOf.cs" />
+    <Compile Include="zzzOLD\yayoCombat_Defs\JobDefOf.cs" />
+    <Compile Include="zzzOLD\yayoCombat_Defs\ThingCategoryDefOf.cs" />
+    <Compile Include="zzzOLD\YayosCombatAddon.cs" />
+    <Compile Include="zzzOLD\Loadout\PawnColumnWorker_CarryAmmo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="zzzOLD\Eject\Designator_EjectAmmo.cs" />
+    <Compile Include="zzzOLD\Reload\Command_ReloadActions.cs" />
+    <Compile Include="zzzOLD\Utility\InventoryUtility.cs" />
+    <Compile Include="zzzOLD\Utility\ReloadUtility.cs" />
+    <Compile Include="zzzOLD\Stuff\YCA_SoundDefOf.cs" />
+    <Compile Include="zzzOLD\Stuff\YCA_Textures.cs" />
+    <Compile Include="zzzOLD\YayosCombatAddonSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer">
+      <Version>2.3.0</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Krafs.Rimworld.Ref">
+      <Version>1.6.4518</Version>
+    </PackageReference>
+    <PackageReference Include="Lib.Harmony">
+      <Version>2.3.6</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>setlocal ENABLEDELAYEDEXPANSION
+
+if $(ConfigurationName) neq Release (
+echo COMPILE IN RELEASE MODE!
+exit /b 1
+)
+
+set dir=$(TargetDir)
+if "x!dir:RimWorld\Mods=!"=="x%25dir%25" D:\0Stuff\2Games\RimWorld\_mods\_deploy.bat $(TargetName)</PostBuildEvent>
+  </PropertyGroup>
+</Project>
