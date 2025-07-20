@@ -42,17 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlsBuilder.cs" />
-    <Compile Include="zzzOLD\Eject\WorkGiver_EjectAmmo.cs" />
-    <Compile Include="zzzOLD\Stuff\YCA_DesignationDefOf.cs" />
-    <Compile Include="zzzOLD\Utility\AmmoUtility.cs" />
-    <Compile Include="zzzOLD\Utility\GeneralUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Eject\WorkGiver_EjectAmmo.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Stuff\YCA_DesignationDefOf.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Utility\AmmoUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Utility\GeneralUtility.cs" />
     <Compile Include="HarmonyPatches.cs" />
-    <Compile Include="zzzOLD\Jobs\JobDriver_EjectAmmo.cs" />
-    <Compile Include="zzzOLD\Jobs\JobDriver_ReloadFromSurrounding.cs" />
-    <Compile Include="zzzOLD\Jobs\YCA_JobUtility.cs" />
-    <Compile Include="zzzOLD\Jobs\YCA_JobDefOf.cs" />
-    <Compile Include="zzzOLD\Jobs\JobDriver_ReloadFromInventory.cs" />
-    <Compile Include="zzzOLD\yayoCombat\ArmorUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\JobDriver_EjectAmmo.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\JobDriver_ReloadFromSurrounding.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\YCA_JobUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\YCA_JobDefOf.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\JobDriver_ReloadFromInventory.cs" />
+    <Compile Include="Utility\ArmorUtility.cs" />
     <Compile Include="zzzOLD\yayoCombat\JobDriver_EjectAmmo.cs" />
     <Compile Include="zzzOLD\yayoCombat\patch_Building_TurretGun_MakeGun.cs" />
     <Compile Include="zzzOLD\yayoCombat\patch_CompApparelReloadable_PostExposeData.cs" />
@@ -91,16 +91,16 @@
     <Compile Include="zzzOLD\yayoCombat_Defs\BodyPartGroupDefOf.cs" />
     <Compile Include="zzzOLD\yayoCombat_Defs\JobDefOf.cs" />
     <Compile Include="zzzOLD\yayoCombat_Defs\ThingCategoryDefOf.cs" />
-    <Compile Include="zzzOLD\YayosCombatAddon.cs" />
-    <Compile Include="zzzOLD\Loadout\PawnColumnWorker_CarryAmmo.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\YayosCombatAddon.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Loadout\PawnColumnWorker_CarryAmmo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="zzzOLD\Eject\Designator_EjectAmmo.cs" />
-    <Compile Include="zzzOLD\Reload\Command_ReloadActions.cs" />
-    <Compile Include="zzzOLD\Utility\InventoryUtility.cs" />
-    <Compile Include="zzzOLD\Utility\ReloadUtility.cs" />
-    <Compile Include="zzzOLD\Stuff\YCA_SoundDefOf.cs" />
-    <Compile Include="zzzOLD\Stuff\YCA_Textures.cs" />
-    <Compile Include="zzzOLD\YayosCombatAddonSettings.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Eject\Designator_EjectAmmo.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Reload\Command_ReloadActions.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Utility\InventoryUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Utility\ReloadUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Stuff\YCA_SoundDefOf.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\Stuff\YCA_Textures.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\YayosCombatAddonSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer">
@@ -109,7 +109,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>1.6.4518</Version>
+      <Version>1.6.4523</Version>
     </PackageReference>
     <PackageReference Include="Lib.Harmony">
       <Version>2.3.6</Version>
