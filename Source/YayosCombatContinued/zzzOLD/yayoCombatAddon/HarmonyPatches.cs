@@ -14,7 +14,7 @@ using Verse;
 using Verse.AI;
 using yayoCombat.HarmonyPatches;
 
-namespace YayosCombatAddon
+namespace YayosCombatContinued
 {
 	[StaticConstructorOnStartup]
 	public static class HarmonyPatches
@@ -135,7 +135,7 @@ namespace YayosCombatAddon
 			}
 
 			if (addReloadGizmo)
-				Log.ErrorOnce($"{nameof(YayosCombatAddon)}: Failed to add 'Reload' gizmo!", 0x18051848);
+				Log.ErrorOnce($"{nameof(YayosCombatContinued)}: Failed to add 'Reload' gizmo!", 0x18051848);
 		}
 
 		static IEnumerable<Gizmo> ThingComp_CompGetGizmosExtra_Postfix(IEnumerable<Gizmo> __result, ThingComp __instance)
@@ -146,7 +146,7 @@ namespace YayosCombatAddon
 					|| reloadable.Props.ammoCountPerCharge > 0))
 			{
 				var thing = reloadable.parent;
-				if (thing.Map.designationManager.DesignationOn(thing, YCC_DesignationDefOf.YCA_EjectAmmo) == null)
+				if (thing.Map.designationManager.DesignationOn(thing, YCC_DesignationDefOf.YCC_EjectAmmo) == null)
 				{
 					yield return new Command_Action
 					{
@@ -155,8 +155,8 @@ namespace YayosCombatAddon
 						icon = Textures.AmmoEject,
 						disabled = reloadable.EjectableAmmo() <= 0,
 						disabledReason = "YCC.NoEjectableAmmo".Translate(),
-						action = () => thing.Map.designationManager.AddDesignation(new Designation(thing, YCC_DesignationDefOf.YCA_EjectAmmo)),
-						activateSound = YCC_SoundDefOf.YCA_Designate_EjectAmmo,
+						action = () => thing.Map.designationManager.AddDesignation(new Designation(thing, YCC_DesignationDefOf.YCC_EjectAmmo)),
+						activateSound = YCC_SoundDefOf.YCC_Designate_EjectAmmo,
 					};
 				}
 			}
@@ -230,7 +230,7 @@ namespace YayosCombatAddon
 		static bool YC_Pawn_EquipmentTracker_DropAllEquipment_Prefix()
 		{
 			// do not eject ammo from weapons dropped on death/downed if eject ammo disabled
-			return YayosCombatAddon.Settings.EjectAmmoOnDowned;
+			return YayosCombatContinued.Settings.EjectAmmoOnDowned;
 		}
 
 		static void Pawn_EquipmentTracker_DropAllEquipment_Prefix(Pawn_EquipmentTracker __instance)
@@ -239,7 +239,7 @@ namespace YayosCombatAddon
 			if (__instance?.pawn?.IsPlayerControlled != false)
 				return;
 			// skip if all ammo is dropped
-			if (YayosCombatAddon.Settings.AmmoInWeaponOnDownedFactor == 100)
+			if (YayosCombatContinued.Settings.AmmoInWeaponOnDownedFactor == 100)
 				return;
 
 			// reduce ammo in weapon
@@ -253,8 +253,8 @@ namespace YayosCombatAddon
 			if (__instance?.pawn?.IsPlayerControlled != false)
 				return;
 			// skip if all ammo is dropped
-			if (YayosCombatAddon.Settings.AmmoDroppedOnDownedFactor == 100
-				&& YayosCombatAddon.Settings.AmmoInWeaponOnDownedFactor == 100)
+			if (YayosCombatContinued.Settings.AmmoDroppedOnDownedFactor == 100
+				&& YayosCombatContinued.Settings.AmmoInWeaponOnDownedFactor == 100)
 				return;
 
 			// iterate through inventory
@@ -278,7 +278,7 @@ namespace YayosCombatAddon
 			if (!thing.IsAmmo(true))
 				return -1;
 			// reduce dropped ammo
-			var count = Mathf.RoundToInt(thing.stackCount * YayosCombatAddon.Settings.AmmoDroppedOnDownedFactor * 0.01f);
+			var count = Mathf.RoundToInt(thing.stackCount * YayosCombatContinued.Settings.AmmoDroppedOnDownedFactor * 0.01f);
 			if (count > 0)
 				thing.stackCount = count;
 			return count;
@@ -290,7 +290,7 @@ namespace YayosCombatAddon
 			if (comp?.AmmoDef?.IsAmmo() != true)
 				return false;
 			// reduce ammo in dropped weapon
-			comp.remainingCharges = Mathf.RoundToInt(comp.remainingCharges * YayosCombatAddon.Settings.AmmoInWeaponOnDownedFactor * 0.01f);
+			comp.remainingCharges = Mathf.RoundToInt(comp.remainingCharges * YayosCombatContinued.Settings.AmmoInWeaponOnDownedFactor * 0.01f);
 			return true;
 		}
 
@@ -310,7 +310,7 @@ namespace YayosCombatAddon
 				yield return instruction;
 				previous = instruction.opcode;
 			}
-			Log.Error($"{nameof(YayosCombatAddon)}: failed to apply '{nameof(YC_Patch_PawnGenerator_GenerateGearFor_Transpiler)}'");
+			Log.Error($"{nameof(YayosCombatContinued)}: failed to apply '{nameof(YC_Patch_PawnGenerator_GenerateGearFor_Transpiler)}'");
 		}
 		static void Patch_PawnGenerator_GenerateGearFor(List<CompApparelReloadable> allWeaponsComps, Pawn pawn)
 		{
@@ -377,7 +377,7 @@ namespace YayosCombatAddon
 				jobInfo.Def = ___curJob.def;
 				jobInfo.EndCondition = condition;
 
-				if (YayosCombatAddon.SimpleSidearmsCompatibility
+				if (YayosCombatContinued.SimpleSidearmsCompatibility
 					&& ___curJob.def == JobDefOf.Reload
 					&& jobInfo.PreviousWeapon != null)
 				{
