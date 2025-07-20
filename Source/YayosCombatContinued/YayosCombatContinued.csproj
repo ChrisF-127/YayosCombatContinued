@@ -31,27 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="SimpleSidearms">
+      <HintPath>F:\Steam\SteamApps\workshop\content\294100\927155256\v1.6\Assemblies\SimpleSidearms.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlsBuilder.cs" />
-    <Compile Include="JobDriver\JobDriver_ReloadFromInventory.cs" />
-    <Compile Include="JobDriver\JobDriver_ReloadFromSurrounding.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Eject\WorkGiver_EjectAmmo.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Stuff\YCA_DesignationDefOf.cs" />
+    <Compile Include="JobDrivers\JobDriver_ReloadFromInventory.cs" />
+    <Compile Include="JobDrivers\JobDriver_ReloadFromSurrounding.cs" />
+    <Compile Include="WorkGivers\WorkGiver_EjectAmmo.cs" />
+    <Compile Include="Defs\YCC_DesignationDefOf.cs" />
     <Compile Include="Utility\AmmoUtility.cs" />
     <Compile Include="Utility\GeneralUtility.cs" />
     <Compile Include="zzzOLD\yayoCombatAddon\HarmonyPatches.cs" />
-    <Compile Include="JobDriver\JobDriver_EjectAmmo.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\YCA_JobUtility.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\YCA_JobDefOf.cs" />
+    <Compile Include="JobDrivers\JobDriver_EjectAmmo.cs" />
+    <Compile Include="Utility\JobUtility.cs" />
+    <Compile Include="Defs\YCC_JobDefOf.cs" />
     <Compile Include="Utility\ArmorUtility.cs" />
     <Compile Include="zzzOLD\yayoCombat\patch_Building_TurretGun_MakeGun.cs" />
     <Compile Include="zzzOLD\yayoCombat\patch_CompApparelReloadable_PostExposeData.cs" />
@@ -86,20 +84,18 @@
     <Compile Include="zzzOLD\yayoCombat\reloadUtility.cs" />
     <Compile Include="zzzOLD\yayoCombat\Stance_yyReload.cs" />
     <Compile Include="zzzOLD\yayoCombat\yayoCombat.cs" />
-    <Compile Include="zzzOLD\yayoCombat_Defs\ApparelLayerDefOf.cs" />
-    <Compile Include="zzzOLD\yayoCombat_Defs\BodyPartGroupDefOf.cs" />
-    <Compile Include="zzzOLD\yayoCombat_Defs\JobDefOf.cs" />
-    <Compile Include="zzzOLD\yayoCombat_Defs\ThingCategoryDefOf.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\YayosCombatAddon.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Loadout\PawnColumnWorker_CarryAmmo.cs" />
+    <Compile Include="Defs\YCC_ApparelLayerDefOf.cs" />
+    <Compile Include="Defs\YCC_ThingCategoryDefOf.cs" />
+    <Compile Include="YayosCombatContinued.cs" />
+    <Compile Include="PawnColumnWorkers\PawnColumnWorker_CarryAmmo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Eject\Designator_EjectAmmo.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Reload\Command_ReloadActions.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Utility\InventoryUtility.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Utility\ReloadUtility.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Stuff\YCA_SoundDefOf.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Stuff\YCA_Textures.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\YayosCombatAddonSettings.cs" />
+    <Compile Include="Designators\Designator_EjectAmmo.cs" />
+    <Compile Include="Commands\Command_ReloadActions.cs" />
+    <Compile Include="Utility\InventoryUtility.cs" />
+    <Compile Include="Utility\ReloadUtility.cs" />
+    <Compile Include="Defs\YCC_SoundDefOf.cs" />
+    <Compile Include="Textures\Textures.cs" />
+    <Compile Include="YayosCombatContinuedSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer">
@@ -114,6 +110,10 @@
       <Version>2.3.6</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Publicize Include="Assembly-CSharp" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>setlocal ENABLEDELAYEDEXPANSION

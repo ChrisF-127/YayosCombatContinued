@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <JobDef>
-    <defName>EjectAmmo</defName>
+    <defName>YCC_EjectAmmo</defName>
     <driverClass>YayosCombatContinued.JobDriver_EjectAmmo</driverClass>
     <reportString>ejecting ammo.</reportString>
     <allowOpportunisticPrefix>true</allowOpportunisticPrefix>

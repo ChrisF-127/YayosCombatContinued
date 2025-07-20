@@ -4,7 +4,7 @@ using Verse;
 
 namespace YayosCombatContinued
 {
-	public static class ArmorUtility
+	internal static class ArmorUtility
 	{
 		public const float MaxArmorRating = 2f;
 		public const float DeflectThresholdFactor = 0.5f;
@@ -151,7 +151,7 @@ namespace YayosCombatContinued
 				? pawn.health.summaryHealth.SummaryHealthPercent
 				: armorThing.HitPoints / (float)armorThing.MaxHitPoints;
 			var defenceRating = Mathf.Max((armorRating * 0.9f) - armorPenetration, 0f);
-			var getHitRating = 1f - yayoCombat.s_armorEf;
+			var getHitRating = 1f - YayosCombatContinued.Settings.ArmorEfficiency;
 
 			if (randomZeroOne * getHitRating < defenceRating * armorHpPer)
 			{

@@ -302,7 +302,7 @@ public class yayoCombat : ModBase
         advArmor = advArmorSetting.Value;
         armorEfSetting = Settings.GetHandle("armorEf", "armorEf_title".Translate(), "armorEf_desc".Translate(), 50);
         armorEf = armorEfSetting.Value;
-        s_armorEf = accEf / 100f;
+        s_armorEf = armorEf / 100f;
         unprotectDmgSetting = Settings.GetHandle("unprotectDmg", "unprotectDmg_title".Translate(),
             "unprotectDmg_desc".Translate(), 1.1f);
         unprotectDmg = unprotectDmgSetting.Value;
@@ -466,6 +466,7 @@ public class yayoCombat : ModBase
                 var text = "";
                 var verbProperties = item3.Verbs[0];
                 if (verbProperties.verbClass == null || verbProperties.verbClass == typeof(Verb_ShootOneUse) ||
+                    verbProperties.verbClass == typeof(Verb_LaunchProjectileStaticOneUse) ||
                     verbProperties.consumeFuelPerShot > 0f || item3.weaponTags != null &&
                     (item3.weaponTags.Contains("TurretGun") || item3.weaponTags.Contains("Artillery")))
                 {
@@ -498,7 +499,7 @@ public class yayoCombat : ModBase
                         if (containStringByList != "")
                         {
                             var array = containStringByList.Split('/');
-                            text = "yy_" + array[0];
+                            text = $"yy_{array[0]}";
                             if (ThingDef.Named(text) == null)
                             {
                                 text = "";
@@ -593,8 +594,8 @@ public class yayoCombat : ModBase
                                 Mathf.Max(1, Mathf.RoundToInt(projectile.explosionRadius));
                         }
 
-                        text = (int)item3.techLevel >= 5 ? text + "spacer" :
-                            (int)item3.techLevel < 4 ? text + "primitive" : text + "industrial";
+                        text = (int)item3.techLevel >= 5 ? $"{text}spacer" :
+                            (int)item3.techLevel < 4 ? $"{text}primitive" : $"{text}industrial";
                         switch (ammoType)
                         {
                             case en_ammoType.fire:

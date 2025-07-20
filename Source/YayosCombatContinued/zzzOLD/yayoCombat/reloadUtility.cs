@@ -159,7 +159,6 @@ internal class reloadUtility
                 return;
             }
 
-
             var job = JobMaker.MakeJob(RimWorld.JobDefOf.Reload, cp.ReloadableThing); // cp.parent ?
             job.targetQueueB = reloadedThings.Select(t => new LocalTargetInfo(t)).ToList();
             job.count = reloadedThings.Sum(t => t.stackCount);
@@ -174,10 +173,19 @@ internal class reloadUtility
             return;
         }
 
-        var reservableThings = RefuelWorkGiverUtility.FindEnoughReservableThings(
-            desiredQuantity: new IntRange(cp.MinAmmoNeeded(false), cp.MaxAmmoNeeded(false)), pawn: p,
-            rootCell: p.Position,
-            validThing: t => t.def == cp.AmmoDef && p.Position.DistanceTo(t.Position) <= yayoCombat.supplyAmmoDist);
+        List<Thing> reservableThings = null;
+        try
+        {
+            reservableThings = RefuelWorkGiverUtility.FindEnoughReservableThings(
+                desiredQuantity: new IntRange(cp.MinAmmoNeeded(false), cp.MaxAmmoNeeded(false)), pawn: p,
+                rootCell: p.Position,
+                validThing: t => t.def == cp.AmmoDef && p.Position.DistanceTo(t.Position) <= yayoCombat.supplyAmmoDist);
+        }
+        catch (Exception ex)
+        {
+            Log.ErrorOnce($"{p} cannot find ammo for {cp}\n{ex}", ex.GetHashCode());
+        }
+
         if (reservableThings == null || p.jobs.jobQueue.ToList().Count > 0)
         {
             return;

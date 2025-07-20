@@ -9,7 +9,7 @@ using Verse.AI;
 
 namespace YayosCombatContinued
 {
-	public static class GeneralUtility
+	internal static class GeneralUtility
 	{
 		public static void ShowRejectMessage(Thing target, string text) =>
 			Messages.Message(text, new LookTargets(target), MessageTypeDefOf.RejectInput, historical: false);
