@@ -12,6 +12,181 @@ namespace YayosCombatContinued
 {
 	internal static class ReloadUtility
 	{
+		internal static void EjectAmmo(Pawn pawn, ThingWithComps thingWithComps)
+		{
+			if (!pawn.IsColonist && pawn.equipment.Primary == null)
+				return;
+
+			pawn.jobs.TryTakeOrderedJob(new Job(YCC_JobDefOf.YCC_EjectAmmo, thingWithComps) { count = 1 }, JobTag.Misc);
+		}
+
+		internal static void EjectAmmoAction(Pawn pawn, CompApparelReloadable comp)
+		{
+			var charges = 0;
+			while (comp.RemainingCharges > 0)
+			{
+				comp.UsedOnce();
+				charges++;
+			}
+
+			while (charges > 0)
+			{
+				var thing = ThingMaker.MakeThing(comp.AmmoDef);
+				thing.stackCount = Mathf.Min(thing.def.stackLimit, charges) * comp.Props.ammoCountPerCharge;
+				charges -= thing.stackCount;
+
+				GenPlace.TryPlaceThing(thing, pawn.Position, pawn.Map, ThingPlaceMode.Near);
+			}
+
+			comp.Props.soundReload.PlayOneShot(new TargetInfo(pawn.Position, pawn.Map));
+		}
+
+		internal static void TryThingEjectAmmoDirect(Thing weapon, bool forbidden = false, Pawn pawn = null)
+		{
+			if (!weapon.def.IsWeapon)
+				return;
+
+			var comp = weapon.TryGetComp<CompApparelReloadable>();
+			if (comp == null)
+				return;
+
+			var charges = 0;
+			while (comp.RemainingCharges > 0)
+			{
+				comp.UsedOnce();
+				charges++;
+			}
+
+			while (charges > 0)
+			{
+				var thing = ThingMaker.MakeThing(comp.AmmoDef);
+				thing.stackCount = Mathf.Min(thing.def.stackLimit, charges) * comp.Props.ammoCountPerCharge;
+				charges -= thing.stackCount;
+
+				if (forbidden)
+					thing.SetForbidden(true);
+
+				if (pawn != null)
+					GenPlace.TryPlaceThing(thing, pawn.Position, pawn.Map, ThingPlaceMode.Near);
+				else
+					GenPlace.TryPlaceThing(thing, weapon.Position, weapon.Map, ThingPlaceMode.Near);
+			}
+		}
+
+		public static Thing GetEjectableWeapon(IntVec3 c, Map m)
+		{
+			foreach (var thing in c.GetThingList(m))
+				if (thing.TryGetComp<CompApparelReloadable>().RemainingCharges > 0)
+					return thing;
+			return null;
+		}
+
+		public static void TryAutoReload(CompApparelReloadable comp)
+		{
+			if (comp == null 
+				|| comp.RemainingCharges > 0 
+				|| comp.AmmoDef == null)
+				return;
+
+			var pawn = comp.Wearer;
+			if (pawn == null)
+				return;
+
+			var inventory = pawn.inventory?.innerContainer?.ToList();
+			if (inventory == null)
+				return;
+
+			var thingsToReload = new List<Thing>();
+			foreach (var thing in inventory)
+			{
+				if (thing != null && thing.def == comp.AmmoDef)
+					thingsToReload.Add(thing);
+			}
+
+			if (thingsToReload.Count == 0 
+				&& !pawn.RaceProps.Humanlike 
+				&& YayosCombatContinued.Settings.RefillMechAmmo)
+			{
+				var thing = ThingMaker.MakeThing(comp.AmmoDef);
+				thing.stackCount = comp.MaxAmmoNeeded(true);
+
+				pawn.inventory.innerContainer.TryAdd(thing);
+
+				thingsToReload.Add(thing);
+			}
+
+			if (thingsToReload.Count > 0)
+			{
+				var reloadedThings = new List<Thing>();
+				var maxAmmoNeeded = comp.MaxAmmoNeeded(true);
+				for (var i = thingsToReload.Count - 1; i >= 0; i--)
+				{
+					var ammoToUse = Mathf.Min(maxAmmoNeeded, thingsToReload[i].stackCount);
+					if (!pawn.inventory.innerContainer.TryDrop(
+							thingsToReload[i], 
+							pawn.Position, 
+							pawn.Map, 
+							ThingPlaceMode.Direct,
+							ammoToUse, 
+							out var resultingThing) 
+						&& !pawn.inventory.innerContainer.TryDrop(
+							thingsToReload[i],
+							pawn.Position, 
+							pawn.Map, 
+							ThingPlaceMode.Near, 
+							ammoToUse, 
+							out resultingThing))
+						continue; // cant generate item?
+
+					if (resultingThing != null && ammoToUse > 0)
+					{
+						maxAmmoNeeded -= ammoToUse;
+						reloadedThings.Add(resultingThing);
+					}
+
+					if (maxAmmoNeeded <= 0)
+						break;
+				}
+
+				if (reloadedThings.Count <= 0)
+					return;
+
+				var job = JobMaker.MakeJob(JobDefOf.Reload, comp.ReloadableThing); // cp.parent ?
+				job.targetQueueB = reloadedThings.Select(t => new LocalTargetInfo(t)).ToList();
+				job.count = reloadedThings.Sum(t => t.stackCount);
+				job.count = Math.Min(job.count, comp.MaxAmmoNeeded(true));
+
+				pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+				pawn.jobs.jobQueue.EnqueueLast(JobMaker.MakeJob(JobDefOf.Goto, pawn.Position));
+
+				return;
+			}
+
+			if (YayosCombatContinued.Settings.SupplyAmmoDistance < 0)
+				return;
+
+			List<Thing> reservableThings = null;
+			try
+			{
+				reservableThings = RefuelWorkGiverUtility.FindEnoughReservableThings(
+					pawn,
+					pawn.Position,
+					new IntRange(comp.MinAmmoNeeded(false), comp.MaxAmmoNeeded(false)), 
+					t => t.def == comp.AmmoDef && pawn.Position.DistanceTo(t.Position) <= YayosCombatContinued.Settings.SupplyAmmoDistance);
+			}
+			catch (Exception ex)
+			{
+				Log.ErrorOnce($"{pawn} cannot find ammo for {comp}\n{ex}", ex.GetHashCode());
+			}
+
+			if (reservableThings == null || pawn.jobs.jobQueue.Count > 0)
+				return;
+
+			pawn.jobs.TryTakeOrderedJob(JobGiver_Reload.MakeReloadJob(comp, reservableThings), JobTag.Misc);
+			pawn.jobs.jobQueue.EnqueueLast(JobMaker.MakeJob(JobDefOf.Goto, pawn.Position));
+		}
+
+
 		public static bool IsCapableOfReloading(this Pawn pawn) =>
 			pawn != null
 			&& pawn.Spawned
