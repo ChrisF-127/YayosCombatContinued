@@ -48,7 +48,7 @@ namespace YayosCombatContinued
 		private void Initialize()
 		{
 			if (SimpleSidearmsCompatibility)
-				Log.Message($"[{nameof(YayosCombatAddon)}] SimpleSidearms active, compatibility will be applied");
+				Log.Message($"[{nameof(YayosCombatContinued)}] SimpleSidearms active, compatibility will be applied");
 
 			Settings = GetSettings<YayosCombatContinuedSettings>();
 
@@ -87,7 +87,7 @@ namespace YayosCombatContinued
 				}
 			}
 			else
-				Log.Error($"{nameof(YayosCombatAddon)}: could not find any things using the '{AmmoCategoryName}'-ThingCategory (no ammo found); assign tab columns could not be created!");
+				Log.Error($"{nameof(YayosCombatContinued)}: could not find any things using the '{AmmoCategoryName}'-ThingCategory (no ammo found); assign tab columns could not be created!");
 		}
 		#endregion
 	}

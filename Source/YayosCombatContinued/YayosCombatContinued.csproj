@@ -46,44 +46,11 @@
     <Compile Include="Defs\YCC_DesignationDefOf.cs" />
     <Compile Include="Utility\AmmoUtility.cs" />
     <Compile Include="Utility\GeneralUtility.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\HarmonyPatches.cs" />
+    <Compile Include="HarmonyPatches\HarmonyPatches.cs" />
     <Compile Include="JobDrivers\JobDriver_EjectAmmo.cs" />
     <Compile Include="Utility\JobUtility.cs" />
     <Compile Include="Defs\YCC_JobDefOf.cs" />
     <Compile Include="Utility\ArmorUtility.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_Building_TurretGun_MakeGun.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelReloadable_PostExposeData.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelReloadable_UsedOnce.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelVerbOwner_Charged_PostPostMake.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelVerbOwner_CreateVerbTargetCommand.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_CompApparelVerbOwner_Wearer.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_DamageWorker_AddInjury.cs" />
-    <Compile Include="zzzOLD\yayoCombat\Patch_DefGenerator_GenerateImpliedDefs_PreResolve.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_Dialog_ManageDrugPolicies_DoEntryRow.cs" />
-    <Compile Include="zzzOLD\yayoCombat\Patch_DrugPolicy.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_DrugPolicy_InitializeIfNeeded.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_JobGiver_MoveDrugsToInventory_FindDrugFor.cs" />
-    <Compile Include="zzzOLD\yayoCombat\Patch_PawnGenerator_GenerateGearFor.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_Pawn_DrugPolicyTracker_AllowedToTakeToInventory.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_Pawn_EquipmentTracker_DropAllEquipment.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_Pawn_TickRare.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_ReloadableUtility_FindPotentiallyReloadableGear.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_ReloadableUtility_FindSomeReloadableComponent.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_ReloadableUtility_WearerOf.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_StartingTicksToImpact.cs" />
-    <Compile Include="zzzOLD\yayoCombat\Patch_StatPart_ReloadMarketValue_TransformAndExplain.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_ThingFilter_SetFromPreset.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_ThingSetMaker_TraderStock_Generate.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_ThingWithComps_GetFloatMenuOptions.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_ThingWithComps_GetGizmos.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_Thing_TakeDamage.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_Tool_AdjustedCooldown.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_TraderKindDef_WillTrade.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_Verb_LaunchProjectile_TryCastShot.cs" />
-    <Compile Include="zzzOLD\yayoCombat\patch_WorkGiver_HasHuntingWeapon.cs" />
-    <Compile Include="zzzOLD\yayoCombat\reloadUtility.cs" />
-    <Compile Include="zzzOLD\yayoCombat\Stance_yyReload.cs" />
-    <Compile Include="zzzOLD\yayoCombat\yayoCombat.cs" />
     <Compile Include="Defs\YCC_ApparelLayerDefOf.cs" />
     <Compile Include="Defs\YCC_ThingCategoryDefOf.cs" />
     <Compile Include="YayosCombatContinued.cs" />
@@ -96,6 +63,38 @@
     <Compile Include="Defs\YCC_SoundDefOf.cs" />
     <Compile Include="Textures\Textures.cs" />
     <Compile Include="YayosCombatContinuedSettings.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Building_TurretGun_MakeGun.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\CompApparelReloadable_PostExposeData.cs" />
+    <Compile Include="HarmonyPatches\Patches\CompApparelReloadable_UsedOnce.cs" />
+    <Compile Include="HarmonyPatches\Patches\CompApparelVerbOwner_Charged_PostPostMake.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\CompApparelVerbOwner_CreateVerbTargetCommand.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\CompApparelVerbOwner_Wearer.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\DamageWorker_AddInjury.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\DefGenerator_GenerateImpliedDefs_PreResolve.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Dialog_ManageDrugPolicies_DoEntryRow.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\DrugPolicy_ExposeData.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\DrugPolicy_InitializeIfNeeded.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\JobDriver_Reload_MakeNewToils.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\JobGiver_MoveDrugsToInventory_FindDrugFor_NewTemp.cs" />
+    <Compile Include="HarmonyPatches\Patches\PawnGenerator_GenerateGearFor.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Pawn_DrugPolicyTracker_AllowedToTakeToInventory.cs" />
+    <Compile Include="HarmonyPatches\Patches\Pawn_EquipmentTracker_DropAllEquipment.cs" />
+    <Compile Include="HarmonyPatches\Patches\Pawn_TickRare.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Projectile_StartingTicksToImpact.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ReloadableUtility_FindPotentiallyReloadableGear.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ReloadableUtility_FindSomeReloadableComponent.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ReloadableUtility_WearerOf.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\StatPart_ReloadMarketValue_TransformAndExplain.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ThingFilter_SetFromPreset.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ThingSetMaker_TraderStock_Generate.cs" />
+    <Compile Include="HarmonyPatches\Patches\ThingWithComps_GetFloatMenuOptions.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ThingWithComps_GetGizmos.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Thing_TakeDamage.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Tool_AdjustedCooldown.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\TraderKindDef_WillTrade.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Verb_LaunchProjectile_TryCastShot.cs" />
+    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\WorkGiver_HasHuntingWeapon.cs" />
+    <Compile Include="zzzOLD\yayoCombat\yayoCombat.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Publicizer">
@@ -113,7 +112,9 @@
   <ItemGroup>
     <Publicize Include="Assembly-CSharp" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="zzzOLD\yayoCombatAddon\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>setlocal ENABLEDELAYEDEXPANSION

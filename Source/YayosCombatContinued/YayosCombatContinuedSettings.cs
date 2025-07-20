@@ -26,6 +26,10 @@ namespace YayosCombatContinued
 		public bool EjectAmmoOnDowned { get; set; } = Default_EjectAmmoOnDowned;
 		public int AmmoDroppedOnDownedFactor { get; set; } = Default_AmmoDroppedOnDownedFactor;
 		public int AmmoInWeaponOnDownedFactor { get; set; } = Default_AmmoInWeaponOnDownedFactor;
+
+#error TODO PROPERTIES:
+		public bool UseAmmo { get; set; }
+		public float AmmoAmountOnSpawn { get; set; }
 		#endregion
 
 		#region PUBLIC METHODS

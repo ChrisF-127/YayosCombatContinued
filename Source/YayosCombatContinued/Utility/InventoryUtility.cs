@@ -22,14 +22,14 @@ namespace YayosCombatContinued
 				if (thingWithComps != primary)
 				{
 					if (primary != null && !equipment.TryTransferEquipmentToContainer(primary, pawn.inventory.innerContainer))
-						Log.Warning($"{nameof(YayosCombatAddon)}: could not move '{primary}' into inventory");
+						Log.Warning($"{nameof(YayosCombatContinued)}: could not move '{primary}' into inventory");
 					thingWithComps.holdingOwner?.Remove(thingWithComps);
 					equipment.Primary = thingWithComps;
 					success = true;
 				}
 			}
 			else
-				Log.Warning($"{nameof(YayosCombatAddon)}: '{thing}' is not {nameof(ThingWithComps)}");
+				Log.Warning($"{nameof(YayosCombatContinued)}: '{thing}' is not {nameof(ThingWithComps)}");
 			return success;
 		}
 
