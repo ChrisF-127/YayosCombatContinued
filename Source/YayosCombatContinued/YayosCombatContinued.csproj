@@ -7,8 +7,8 @@
     <ProjectGuid>{BD73667A-078A-4A38-90F1-738A6CF12264}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YayosCombatRemastered</RootNamespace>
-    <AssemblyName>YayosCombatRemastered</AssemblyName>
+    <RootNamespace>YayosCombatContinued</RootNamespace>
+    <AssemblyName>YayosCombatContinued</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,18 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlsBuilder.cs" />
+    <Compile Include="JobDriver\JobDriver_ReloadFromInventory.cs" />
+    <Compile Include="JobDriver\JobDriver_ReloadFromSurrounding.cs" />
     <Compile Include="zzzOLD\yayoCombatAddon\Eject\WorkGiver_EjectAmmo.cs" />
     <Compile Include="zzzOLD\yayoCombatAddon\Stuff\YCA_DesignationDefOf.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Utility\AmmoUtility.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Utility\GeneralUtility.cs" />
-    <Compile Include="HarmonyPatches.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\JobDriver_EjectAmmo.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\JobDriver_ReloadFromSurrounding.cs" />
+    <Compile Include="Utility\AmmoUtility.cs" />
+    <Compile Include="Utility\GeneralUtility.cs" />
+    <Compile Include="zzzOLD\yayoCombatAddon\HarmonyPatches.cs" />
+    <Compile Include="JobDriver\JobDriver_EjectAmmo.cs" />
     <Compile Include="zzzOLD\yayoCombatAddon\Jobs\YCA_JobUtility.cs" />
     <Compile Include="zzzOLD\yayoCombatAddon\Jobs\YCA_JobDefOf.cs" />
-    <Compile Include="zzzOLD\yayoCombatAddon\Jobs\JobDriver_ReloadFromInventory.cs" />
     <Compile Include="Utility\ArmorUtility.cs" />
-    <Compile Include="zzzOLD\yayoCombat\JobDriver_EjectAmmo.cs" />
     <Compile Include="zzzOLD\yayoCombat\patch_Building_TurretGun_MakeGun.cs" />
     <Compile Include="zzzOLD\yayoCombat\patch_CompApparelReloadable_PostExposeData.cs" />
     <Compile Include="zzzOLD\yayoCombat\patch_CompApparelReloadable_UsedOnce.cs" />

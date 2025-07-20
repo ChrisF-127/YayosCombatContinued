@@ -2,7 +2,7 @@ using RimWorld;
 using UnityEngine;
 using Verse;
 
-namespace YayosCombatRemastered
+namespace YayosCombatContinued
 {
 	public static class ArmorUtility
 	{

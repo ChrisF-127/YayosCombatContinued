@@ -10,7 +10,7 @@ using Verse;
 using Verse.AI;
 using Verse.Sound;
 
-namespace YayosCombatAddon
+namespace YayosCombatContinued
 {
 	internal class JobDriver_ReloadFromSurrounding : JobDriver
 	{
@@ -22,7 +22,7 @@ namespace YayosCombatAddon
 			return true;
 		}
 
-		public override IEnumerable<Toil> MakeNewToils()
+		protected override IEnumerable<Toil> MakeNewToils()
 		{
 			this.FailOn(() => pawn == null);
 			this.FailOn(() => pawn.Downed);

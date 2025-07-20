@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Verse;
 using Verse.AI;
 
-namespace YayosCombatAddon
+namespace YayosCombatContinued
 {
 	public static class GeneralUtility
 	{

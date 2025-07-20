@@ -8,7 +8,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace YayosCombatAddon
+namespace YayosCombatContinued
 {
 	public static class AmmoUtility
 	{

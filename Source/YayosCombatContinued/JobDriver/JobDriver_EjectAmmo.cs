@@ -8,11 +8,12 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace YayosCombatAddon
+namespace YayosCombatContinued
 {
     public class JobDriver_EjectAmmo : JobDriver
     {
-        private ThingWithComps Gear => (ThingWithComps)job.GetTarget(TargetIndex.A).Thing;
+        private ThingWithComps Gear => 
+            (ThingWithComps)job.GetTarget(TargetIndex.A).Thing;
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)
         {
@@ -20,7 +21,7 @@ namespace YayosCombatAddon
             return true;
         }
 
-        public override IEnumerable<Toil> MakeNewToils()
+        protected override IEnumerable<Toil> MakeNewToils()
         {
             var comp = Gear?.TryGetComp<CompApparelReloadable>();
             job.count = Gear.stackCount;

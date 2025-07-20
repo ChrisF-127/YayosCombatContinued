@@ -9,7 +9,7 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 
-namespace YayosCombatAddon
+namespace YayosCombatContinued
 {
 	internal class JobDriver_ReloadFromInventory : JobDriver
 	{
@@ -18,7 +18,7 @@ namespace YayosCombatAddon
 		public override bool TryMakePreToilReservations(bool errorOnFailed) =>
 			true;
 
-		public override IEnumerable<Toil> MakeNewToils()
+		protected override IEnumerable<Toil> MakeNewToils()
 		{
 			this.FailOn(() => pawn == null);
 			this.FailOn(() => pawn.Downed);
