@@ -16,8 +16,6 @@ namespace YayosCombatContinued
 
 			foreach (var thing in pawn.equipment.AllEquipmentListForReading)
 			{
-#warning TODO test which weapons are found via AllEquipmentListForReading & make sure whether SimpleSidearms compatibility is needed
-				Log.Message($"ReloadableUtility_FindSomeReloadableComponent: AllEquipmentListForReading: {thing}");
 				var comp = thing.TryGetComp<CompApparelReloadable>();
 				if (comp?.NeedsReload(allowForcedReload) != true)
 					continue;
@@ -30,8 +28,7 @@ namespace YayosCombatContinued
 			{
 				foreach (var thing in pawn.GetSimpleSidearms())
 				{
-					Log.Message($"ReloadableUtility_FindSomeReloadableComponent: GetSimpleSidearms: {thing}");
-					// requires secondary patch to JobDriver_Reload.MakeNewToils (must only fail if comp.Wearer is neither pawn nor comp.Parent is in pawn's inventory)
+					// requires Prefix to JobDriver_Reload.MakeNewToils which switches to thing that shall be reloaded, fails otherwise (s. HarmonyPatches)
 					var comp = thing.TryGetComp<CompApparelReloadable>();
 					if (comp?.NeedsReload(allowForcedReload) != true)
 						continue;

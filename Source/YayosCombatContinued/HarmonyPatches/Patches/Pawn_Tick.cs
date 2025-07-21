@@ -5,7 +5,7 @@ using Verse;
 namespace YayosCombatContinued
 {
 	[HarmonyPatch(typeof(Pawn), nameof(Pawn.Tick))]
-	internal class Pawn_TickRare
+	internal class Pawn_Tick
 	{
 		[HarmonyPriority(0)]
 		private static void Postfix(Pawn __instance)

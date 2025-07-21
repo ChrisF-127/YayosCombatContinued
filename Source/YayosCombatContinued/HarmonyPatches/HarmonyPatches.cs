@@ -62,8 +62,7 @@ namespace YayosCombatContinued
 			// SimpleSidearms compatibility patches
 			if (YayosCombatContinued.SimpleSidearmsCompatibility)
 			{
-#warning JobDriver_Reload_MakeNewToils_Prefix merge ?
-				// patch to equip thing from inventory so it can be reloaded
+				// patch to equip thing from inventory so it can be reloaded -- see JobDriver_Reload_MakeNewToils for Postfix
 				harmony.Patch(
 					AccessTools.Method(typeof(JobDriver_Reload), nameof(JobDriver_Reload.MakeNewToils)),
 					prefix: new HarmonyMethod(typeof(HarmonyPatches), nameof(JobDriver_Reload_MakeNewToils_Prefix)));

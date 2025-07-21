@@ -13,11 +13,10 @@ namespace YayosCombatContinued
 				|| __instance.Wearer == null)
 				return;
 
-			// (new) don't try to reload ammo that's not part of Yayo's Combat
+			// don't try to reload ammo that's not part of Yayo's Combat
 			if (__instance.AmmoDef?.IsAmmo() != true)
 				return;
 
-			// (replacement) Replaced with new method
 			var pawn = __instance.Wearer;
 			var drafted = pawn.Drafted;
 			if (!ReloadUtility.TryAutoReloadSingle(

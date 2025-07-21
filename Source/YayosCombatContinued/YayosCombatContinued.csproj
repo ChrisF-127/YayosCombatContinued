@@ -74,7 +74,7 @@
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Dialog_ManageDrugPolicies_DoEntryRow.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\DrugPolicy_ExposeData.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\DrugPolicy_InitializeIfNeeded.cs" />
-    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\JobDriver_Reload_MakeNewToils.cs" />
+    <Compile Include="HarmonyPatches\Patches\JobDriver_Reload_MakeNewToils.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\JobGiver_MoveDrugsToInventory_FindDrugFor_NewTemp.cs" />
     <Compile Include="HarmonyPatches\Patches\PawnGenerator_GenerateGearFor.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Pawn_DrugPolicyTracker_AllowedToTakeToInventory.cs" />
@@ -82,15 +82,15 @@
     <Compile Include="HarmonyPatches\Patches\Pawn_TickRare.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Projectile_StartingTicksToImpact.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ReloadableUtility_FindPotentiallyReloadableGear.cs" />
-    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ReloadableUtility_FindSomeReloadableComponent.cs" />
+    <Compile Include="HarmonyPatches\Patches\ReloadableUtility_FindSomeReloadableComponent.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ReloadableUtility_WearerOf.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\StatPart_ReloadMarketValue_TransformAndExplain.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ThingFilter_SetFromPreset.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ThingSetMaker_TraderStock_Generate.cs" />
     <Compile Include="HarmonyPatches\Patches\ThingWithComps_GetFloatMenuOptions.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\ThingWithComps_GetGizmos.cs" />
-    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Thing_TakeDamage.cs" />
-    <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Tool_AdjustedCooldown.cs" />
+    <Compile Include="HarmonyPatches\Patches\Thing_TakeDamage.cs" />
+    <Compile Include="HarmonyPatches\Patches\Tool_AdjustedCooldown.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\TraderKindDef_WillTrade.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\Verb_LaunchProjectile_TryCastShot.cs" />
     <Compile Include="zzzOLD\yayoCombat\HarmonyPatches\WorkGiver_HasHuntingWeapon.cs" />

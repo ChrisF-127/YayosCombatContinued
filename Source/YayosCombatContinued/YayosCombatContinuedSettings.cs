@@ -30,6 +30,8 @@ namespace YayosCombatContinued
 #error TODO PROPERTIES:
 		public bool UseAmmo { get; set; }
 		public float AmmoAmountOnSpawn { get; set; }
+		public float MeleeDelay { get; set; }
+		public float MeleeRandom { get; set; }
 		#endregion
 
 		#region PUBLIC METHODS
