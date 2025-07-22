@@ -26,9 +26,10 @@ namespace YayosCombatContinued
 
 			if (YayosCombatContinued.SimpleSidearmsCompatibility)
 			{
+				// requires Prefix to JobDriver_Reload.MakeNewToils which switches to thing that shall be reloaded (s. HarmonyPatches)
+				//  fails otherwise since things in inventory cannot be reloaded
 				foreach (var thing in pawn.GetSimpleSidearms())
 				{
-					// requires Prefix to JobDriver_Reload.MakeNewToils which switches to thing that shall be reloaded, fails otherwise (s. HarmonyPatches)
 					var comp = thing.TryGetComp<CompApparelReloadable>();
 					if (comp?.NeedsReload(allowForcedReload) != true)
 						continue;
